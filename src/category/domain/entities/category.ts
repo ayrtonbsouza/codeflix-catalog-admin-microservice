@@ -21,7 +21,7 @@ export class Category {
   }
 
   private set description(prop: string | undefined) {
-    this.props.description = prop || null;
+    this.props.description = prop ?? null;
   }
 
   get is_active(): boolean | undefined {
@@ -29,7 +29,7 @@ export class Category {
   }
 
   private set is_active(prop: boolean | undefined) {
-    this.props.is_active = prop || true;
+    this.props.is_active = prop ?? true;
   }
 
   get created_at(): Date | undefined {
@@ -37,6 +37,6 @@ export class Category {
   }
 
   private set created_at(prop: Date | undefined) {
-    this.props.created_at = prop || new Date();
+    this.props.created_at = prop ?? new Date();
   }
 }
