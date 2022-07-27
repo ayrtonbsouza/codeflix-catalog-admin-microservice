@@ -37,6 +37,6 @@ export class Category {
   }
 
   private set created_at(prop: Date | undefined) {
-    this.props.created_at = prop ?? new Date();
+    this.props.created_at = prop || new Date();
   }
 }
