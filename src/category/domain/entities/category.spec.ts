@@ -1,5 +1,7 @@
 import { omit } from 'lodash';
+
 import { Category } from './category';
+import { UniqueEntityId } from '../../../@seedwork/domain/value-objects/unique-entity-id';
 
 describe('[Unit] Category Entity', () => {
   it('[constructor] should be able to create a category instance using all parameters', () => {
@@ -81,7 +83,30 @@ describe('[Unit] Category Entity', () => {
     });
   });
 
-  it('[getter] should be able to get and set name', () => {
+  it('[constructor] should be able to create a category instance with id', () => {
+    const input = {
+      name: 'Test Category',
+    };
+    const id = new UniqueEntityId();
+
+    const output = new Category(input, id);
+
+    expect(output).toHaveProperty('id');
+    expect(output.id).toBe(id);
+  });
+
+  it('[constructor] should be able to create a category instance without id', () => {
+    const input = {
+      name: 'Test Category',
+    };
+
+    const output = new Category(input);
+
+    expect(output).toHaveProperty('id');
+    expect(output.id).toBeInstanceOf(UniqueEntityId);
+  });
+
+  it('[getter] should be able to get name', () => {
     const input = {
       name: 'Test Category',
     };
@@ -91,7 +116,7 @@ describe('[Unit] Category Entity', () => {
     expect(output.name).toBe('Test Category');
   });
 
-  it('[getter] should be able to get and set description', () => {
+  it('[getter] should be able to get description', () => {
     const input = {
       name: 'Test Category',
       description: 'Test Category Description',
@@ -102,7 +127,7 @@ describe('[Unit] Category Entity', () => {
     expect(output.description).toBe('Test Category Description');
   });
 
-  it('[getter] should be able to get and set is_active', () => {
+  it('[getter] should be able to get is_active', () => {
     const input = {
       name: 'Test Category',
       is_active: false,
@@ -113,7 +138,7 @@ describe('[Unit] Category Entity', () => {
     expect(output.is_active).toBeFalsy();
   });
 
-  it('[getter] should be able to get and set created_at', () => {
+  it('[getter] should be able to get created_at', () => {
     const input = {
       name: 'Test Category',
       created_at: new Date(),
