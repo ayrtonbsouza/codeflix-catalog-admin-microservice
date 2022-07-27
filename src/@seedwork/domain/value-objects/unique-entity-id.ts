@@ -12,7 +12,7 @@ export class UniqueEntityId {
     const isValid = validate(this.id);
 
     if (!isValid) {
-      throw new InvalidUuidError(this.id);
+      throw new InvalidUuidError();
     }
   }
 }
