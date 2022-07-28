@@ -1,0 +1,11 @@
+{
+  "name": "[Remote] codeflix-videos-microservice",
+  "dockerComposeFile": [
+    "../docker-compose.yaml",
+    "docker-compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/home/node/app",
+  "settings": {},
+  "extensions": []
+}
