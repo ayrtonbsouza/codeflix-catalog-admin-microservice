@@ -39,6 +39,7 @@
     "class-methods-use-this": "off",
     "import/prefer-default-export": "off",
     "no-underscore-dangle": "off",
+    "no-restricted-syntax": "off",
     "dot-notation": "off",
     "no-shadow": "off",
     "no-console": "off",

@@ -23,8 +23,6 @@ describe('[Unit] Value Object Abstract Class', () => {
   it('[method] should be able to convert value to string', () => {
     const date = new Date();
     const arrange = [
-      { input: null, output: 'null' },
-      { input: undefined, output: 'undefined' },
       { input: '', output: '' },
       { input: 'Test String', output: 'Test String' },
       { input: 0, output: '0' },
@@ -40,5 +38,20 @@ describe('[Unit] Value Object Abstract Class', () => {
       const valueObject = new StubValueObject(value.input);
       expect(valueObject.toString()).toBe(value.output);
     });
+  });
+
+  it('[method] should not be able to change a property value', () => {
+    const valueObject = new StubValueObject({
+      firstProperty: 'Test',
+      deep: {
+        secondProperty: 'Test',
+        thirdProperty: new Date(),
+      },
+    });
+    expect(() => {
+      (valueObject as any).value.firstProperty = 'Test String';
+    }).toThrow(
+      "Cannot assign to read only property 'firstProperty' of object '#<Object>'"
+    );
   });
 });
