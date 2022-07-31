@@ -8,4 +8,16 @@ export abstract class ValueObject<Value = any> {
   get value(): Value {
     return this._value;
   }
+
+  toString = () => {
+    if (typeof this.value !== 'object' || this.value === null) {
+      try {
+        return this.value.toString();
+      } catch (error) {
+        return `${this.value}`;
+      }
+    }
+    const output = this.value.toString();
+    return output === '[object Object]' ? JSON.stringify(this.value) : output;
+  };
 }
