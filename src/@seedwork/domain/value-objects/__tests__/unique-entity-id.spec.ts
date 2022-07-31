@@ -1,6 +1,6 @@
 import { validate as uuidValidate } from 'uuid';
-import { InvalidUuidError } from '../../errors/invalid-uuid.error';
-import { UniqueEntityId } from './unique-entity-id';
+import { InvalidUuidError } from '../../../errors/invalid-uuid.error';
+import { UniqueEntityId } from '../unique-entity-id';
 
 describe('[Unit] Unique Entity Id Value Object', () => {
   it('[constructor] should be able to accept a valid uuid as parameter', () => {
@@ -9,7 +9,7 @@ describe('[Unit] Unique Entity Id Value Object', () => {
 
     const output = new UniqueEntityId(input);
 
-    expect(output.id).toBe(input);
+    expect(output.value).toBe(input);
     expect(validate).toHaveBeenCalled();
   });
 
@@ -18,8 +18,8 @@ describe('[Unit] Unique Entity Id Value Object', () => {
 
     const output = new UniqueEntityId();
 
-    expect(output.id).toBeDefined();
-    expect(uuidValidate(output.id)).toBeTruthy();
+    expect(output.value).toBeDefined();
+    expect(uuidValidate(output.value)).toBeTruthy();
     expect(validate).toHaveBeenCalled();
   });
 

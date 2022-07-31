@@ -6,6 +6,10 @@
   ],
   "service": "app",
   "workspaceFolder": "/home/node/app",
-  "settings": {},
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.windows": "zsh",
+    "terminal.integrated.defaultProfile.osx": "zsh"
+  },
   "extensions": []
 }
