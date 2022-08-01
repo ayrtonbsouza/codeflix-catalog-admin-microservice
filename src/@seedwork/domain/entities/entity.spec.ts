@@ -1,5 +1,5 @@
 import { validate } from 'uuid';
-import { UniqueEntityId } from '../domain/value-objects/unique-entity-id';
+import { UniqueEntityId } from '../value-objects/unique-entity-id';
 import { Entity } from './entity';
 
 type StubProperties = {
