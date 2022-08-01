@@ -103,6 +103,7 @@ describe('[Unit] Category Entity', () => {
     const output = new Category(input);
 
     expect(output).toHaveProperty('id');
+    expect(output.uniqueEntityId).toBeInstanceOf(UniqueEntityId);
   });
 
   it('[getter] should be able to get name', () => {
@@ -148,6 +149,18 @@ describe('[Unit] Category Entity', () => {
     expect(output.created_at).toBe(input.created_at);
   });
 
+  it('[setter] should be able to set name', () => {
+    const input = {
+      name: 'Initial Test Name',
+    };
+
+    const output = new Category(input);
+
+    output['name'] = 'Final Test Name';
+
+    expect(output.name).toBe('Final Test Name');
+  });
+
   it('[setter] should be able to set description', () => {
     const input = {
       name: 'Test Category',
@@ -181,5 +194,38 @@ describe('[Unit] Category Entity', () => {
     output['created_at'] = created_at;
 
     expect(output.created_at).toBe(created_at);
+  });
+
+  it('[method] should be able to update a category', () => {
+    const input = {
+      name: 'Test Category',
+    };
+
+    const output = new Category(input);
+    output.update('New Test Category Name', 'Test Category Description');
+    expect(output.name).toBe('New Test Category Name');
+    expect(output.description).toBe('Test Category Description');
+  });
+
+  it('[method] should be able to activate a category', () => {
+    const input = {
+      name: 'Test Category',
+      is_active: false,
+    };
+
+    const output = new Category(input);
+    output.activate();
+    expect(output.is_active).toBeTruthy();
+  });
+
+  it('[method] should be able to deactivate a category', () => {
+    const input = {
+      name: 'Test Category',
+      is_active: true,
+    };
+
+    const output = new Category(input);
+    output.deactivate();
+    expect(output.is_active).toBeFalsy();
   });
 });
