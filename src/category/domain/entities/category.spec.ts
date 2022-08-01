@@ -92,7 +92,7 @@ describe('[Unit] Category Entity', () => {
     const output = new Category(input, id);
 
     expect(output).toHaveProperty('id');
-    expect(output.id).toBe(id);
+    expect(output.id).toBe(id.value);
   });
 
   it('[constructor] should be able to create a category instance without id', () => {
@@ -103,7 +103,6 @@ describe('[Unit] Category Entity', () => {
     const output = new Category(input);
 
     expect(output).toHaveProperty('id');
-    expect(output.id).toBeInstanceOf(UniqueEntityId);
   });
 
   it('[getter] should be able to get name', () => {
