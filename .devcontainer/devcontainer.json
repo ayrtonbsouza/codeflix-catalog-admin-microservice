@@ -1,5 +1,5 @@
 {
-  "name": "[Remote] codeflix-videos-microservice",
+  "name": "[Remote] codeflix-catalog-admin-microservice",
   "dockerComposeFile": [
     "../docker-compose.yaml",
     "docker-compose.yml"
