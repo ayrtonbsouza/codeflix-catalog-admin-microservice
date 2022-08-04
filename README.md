@@ -4,10 +4,12 @@ Microservice developed to support the administration of video catalog of the hyp
 ## Technologies
 This project was developed using the following technologies:
 - [Node](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [Nest](https://nestjs.com/)
 - [Sequelize](https://sequelize.org/)
 - [MySQL](https://www.mysql.com/)
 - [Docker](https://www.docker.com/)
+- [Jest](https://jestjs.io/)
 ## Pre-requisites
 To run this project locally, you must install the following tools in your development environment:
 - [Docker](https://www.docker.com/)
@@ -18,6 +20,7 @@ To run this project, follow these steps:
 ```bash
 # Clone via ssh
 ❯ git clone git@github.com:ayrtonbsouza/codeflix-catalog-admin-microservice.git
+
 # Or clone via HTTPS
 ❯ git clone https://github.com/ayrtonbsouza/codeflix-catalog-admin-microservice.git
 ```
@@ -30,6 +33,20 @@ To run this project, follow these steps:
 ❯ docker compose up -d
 ```
 4. Wait until the project start and go to [localhost:9000/docs](localhost:9000/docs)
+## Running Tests
+To run tests, follow these steps:
+1. Go to project folder
+```bash
+❯ cd codeflix-catalog-admin-microservice
+```
+2. Run docker compose file
+```bash
+❯ docker compose up -d
+```
+3. Wait until the container start and run tests
+```bash
+❯ yarn test
+```
 ## Concepts
 This project was developed using concepts found in the following references:
 - [Domain Driven Design](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215/ref=sr_1_1?keywords=domain+driven+design&qid=1659496893&s=books&sprefix=domain+dr%2Cstripbooks-intl-ship%2C215&sr=1-1)
