@@ -54,6 +54,7 @@ This project was developed using concepts found in the following references:
 - [Clean Architecture](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164/ref=sr_1_1?keywords=clean+architecture&qid=1659496918&s=books&sprefix=clean+archi%2Cstripbooks-intl-ship%2C181&sr=1-1)
 - [Test Driven Development](https://www.amazon.com/Learning-Test-Driven-Development-Polyglot-Uncluttered/dp/1098106474/ref=sr_1_2?crid=KVDJAO2X3D08&keywords=test+driven+development+javascript&qid=1659496955&s=books&sprefix=test+driven+development+javascript%2Cstripbooks-intl-ship%2C163&sr=1-2)
 ## Architecture
+This is the design of the architecture that make up the applications of the Codeflix project. The microservice developed in this repository is highlighted in purple.
 ```mermaid
 graph LR
 A[fa:fa-user Subscriber] -->|HTTPS| B[React: Video Catalog]
@@ -67,6 +68,7 @@ F -->|Postgres Protocol|H[Postgres: Subscription Database]
 I[fa:fa-user Catalog Admin] -->|HTTPS|J[React: Video Catalog Admin]
 J -->|HTTPS|C
 J -->|HTTPS/JSON|K[Node Microservice: Video Catalog Admin]
+style K fill:#8257e5
 K -->|TCP|L[MySQL: Video Catalog]
 K -->|HTTPS|M[GCP: Raw Video Bucket]
 K -.->|RabbitMQ videos.new|N[Go Microservice: Encoder]
@@ -79,3 +81,8 @@ P[Kafka Connect]-.->|Sink|E
 P -.->|Kafka Protocol|Q[Kafka: Message Broker]
 P -.->|Debezium| L
 ```
+## License
+This project is licensed under the MIT License. See the [license file](LICENSE) for more information.
+
+---
+Made with ❤️ by **Ayrton Souza** :wave: [Get in touch!](https://web.whatsapp.com/send?phone=+5511941800859)
