@@ -9,9 +9,12 @@ RUN mkdir -p /usr/share/man/man1 && \
   openjdk-11-jre \
   zsh \
   curl \
-  wget
+  wget \
+  tzdata
 
 ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+
+ENV TZ="America/Sao_Paulo"
 
 USER node
 
