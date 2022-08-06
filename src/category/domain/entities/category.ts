@@ -1,4 +1,3 @@
-import { ValidatorRules } from '../../../@seedwork/validators/validator-rules';
 import { Entity } from '../../../@seedwork/domain/entities/entity';
 import { UniqueEntityId } from '../../../@seedwork/domain/value-objects/unique-entity-id';
 import { CategoryValidatorFactory } from '../validators/category.validator.factory';
