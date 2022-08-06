@@ -4,6 +4,10 @@ import { Category } from './category';
 import { UniqueEntityId } from '../../../@seedwork/domain/value-objects/unique-entity-id';
 
 describe('[Unit] Category Entity', () => {
+  beforeEach(() => {
+    Category.validate = jest.fn();
+  });
+
   it('[constructor] should be able to create a category instance using all parameters', () => {
     const input = {
       name: 'Test Category',
@@ -15,6 +19,7 @@ describe('[Unit] Category Entity', () => {
     const output = new Category(input);
 
     expect(output.props).toStrictEqual(input);
+    expect(Category.validate).toHaveBeenCalled();
   });
 
   it('[constructor] should be able to create a category instance using name as parameter', () => {
@@ -31,6 +36,7 @@ describe('[Unit] Category Entity', () => {
       is_active: true,
     });
     expect(output.props.created_at).toBeInstanceOf(Date);
+    expect(Category.validate).toHaveBeenCalled();
   });
 
   it('[constructor] should be able to create a category instance using name and description as parameters', () => {
@@ -48,6 +54,7 @@ describe('[Unit] Category Entity', () => {
       is_active: true,
     });
     expect(output.props.created_at).toBeInstanceOf(Date);
+    expect(Category.validate).toHaveBeenCalled();
   });
 
   it('[constructor] should be able to create a category instance using name and is_active as parameters', () => {
@@ -65,6 +72,7 @@ describe('[Unit] Category Entity', () => {
       is_active: false,
     });
     expect(output.props.created_at).toBeInstanceOf(Date);
+    expect(Category.validate).toHaveBeenCalled();
   });
 
   it('[constructor] should be able to create a category instance using name and created_at as parameters', () => {
@@ -81,6 +89,7 @@ describe('[Unit] Category Entity', () => {
       is_active: true,
       created_at: input.created_at,
     });
+    expect(Category.validate).toHaveBeenCalled();
   });
 
   it('[constructor] should be able to create a category instance with id', () => {
@@ -93,6 +102,7 @@ describe('[Unit] Category Entity', () => {
 
     expect(output).toHaveProperty('id');
     expect(output.id).toBe(id.value);
+    expect(Category.validate).toHaveBeenCalled();
   });
 
   it('[constructor] should be able to create a category instance without id', () => {
@@ -104,6 +114,7 @@ describe('[Unit] Category Entity', () => {
 
     expect(output).toHaveProperty('id');
     expect(output.uniqueEntityId).toBeInstanceOf(UniqueEntityId);
+    expect(Category.validate).toHaveBeenCalled();
   });
 
   it('[getter] should be able to get name', () => {
@@ -205,6 +216,7 @@ describe('[Unit] Category Entity', () => {
     output.update('New Test Category Name', 'Test Category Description');
     expect(output.name).toBe('New Test Category Name');
     expect(output.description).toBe('Test Category Description');
+    expect(Category.validate).toHaveBeenCalledTimes(2);
   });
 
   it('[method] should be able to activate a category', () => {
