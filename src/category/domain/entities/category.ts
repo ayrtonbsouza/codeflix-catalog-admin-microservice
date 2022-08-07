@@ -1,3 +1,4 @@
+import { EntityValidationError } from '../../../@seedwork/domain/errors/entity-validation.error';
 import { Entity } from '../../../@seedwork/domain/entities/entity';
 import { UniqueEntityId } from '../../../@seedwork/domain/value-objects/unique-entity-id';
 import { CategoryValidatorFactory } from '../validators/category.validator.factory';
@@ -29,7 +30,10 @@ export class Category extends Entity<CategoryProperties> {
 
   static validate(props: CategoryProperties) {
     const validator = CategoryValidatorFactory.create();
-    validator.validate(props);
+    const isValid = validator.validate(props);
+    if (!isValid) {
+      throw new EntityValidationError(validator.errors);
+    }
   }
 
   activate() {
