@@ -1,5 +1,6 @@
+<img src="https://user-images.githubusercontent.com/30063455/186921534-7d45a5ff-3999-4919-bbce-668a3e574367.png" height="48px">
 
-# [Codeflix] Microservice: Video Catalog Administration
+# Microservice: Video Catalog Administration
 Microservice developed to support the administration of video catalog of the hypotetical project called Codeflix.
 ## Technologies
 This project was developed using the following technologies:
