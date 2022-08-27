@@ -42,5 +42,56 @@ describe('[Unit] In Memory Repository', () => {
     );
   });
 
-  // it('[method] should be able to find a entity registry by id', () => {});
+  it('[method] should be able to find a entity registry by id', async () => {
+    const entity = new StubEntity({ name: 'test', price: 10 });
+    await repository.insert(entity);
+    let response = await repository.findById(entity.id);
+    expect(response.toJSON()).toStrictEqual(entity.toJSON());
+    response = await repository.findById(entity.uniqueEntityId);
+    expect(response.toJSON()).toStrictEqual(entity.toJSON());
+  });
+
+  it('[method] should be able to find all entity registries', async () => {
+    const entity = new StubEntity({ name: 'test', price: 10 });
+    await repository.insert(entity);
+    const entities = await repository.findAll();
+    expect(entities).toStrictEqual([entity]);
+  });
+
+  it('[method] should not be able to update a entity registry with incorrect id', () => {
+    const entity = new StubEntity({ name: 'test', price: 10 });
+    expect(repository.update(entity)).rejects.toThrow(
+      new NotFoundError(`Item with id ${entity.id} not found`)
+    );
+  });
+
+  it('[method] should be able to update a entity registry', async () => {
+    const entity = new StubEntity({ name: 'test', price: 10 });
+    await repository.insert(entity);
+
+    const updatedEntity = new StubEntity(
+      { name: 'updated', price: 5 },
+      entity.uniqueEntityId
+    );
+
+    await repository.update(updatedEntity);
+
+    const response = await repository.findById(entity.id);
+    expect(response.toJSON()).toStrictEqual(updatedEntity.toJSON());
+  });
+
+  it('[method] should not be able to delete a entity registry with incorrect id', () => {
+    const entity = new StubEntity({ name: 'test', price: 10 });
+    expect(repository.delete(entity.id)).rejects.toThrow(
+      new NotFoundError(`Item with id ${entity.id} not found`)
+    );
+  });
+
+  it('[method] should be able to delete a entity registry', async () => {
+    const entity = new StubEntity({ name: 'test', price: 10 });
+    await repository.insert(entity);
+    expect(repository.items.length).toBe(1);
+    await repository.delete(entity.id);
+    expect(repository.items).toStrictEqual([]);
+  });
 });
