@@ -19,7 +19,7 @@ export type SearchProperties<Filter = string> = {
   filter?: Filter | null;
 };
 
-class SearchParameters {
+export class SearchParameters {
   protected _page: number;
   protected _per_page: number | 15;
   protected _sort: string | null;
@@ -57,14 +57,14 @@ class SearchParameters {
   }
 
   private set per_page(value: number) {
-    let _per_page = +value;
+    let _per_page = value === (true as any) ? this._per_page : +value;
 
     if (
       Number.isNaN(_per_page) ||
       _per_page <= 0 ||
       parseInt(_per_page as any, 10) !== _per_page
     ) {
-      _per_page = 1;
+      _per_page = 15;
     }
 
     this._per_page = _per_page;
@@ -86,6 +86,7 @@ class SearchParameters {
   private set sort_direction(value: string | null) {
     if (!this.sort) {
       this._sort_direction = null;
+      return;
     }
     const direction = `${value}`.toLowerCase();
     this._sort_direction =
