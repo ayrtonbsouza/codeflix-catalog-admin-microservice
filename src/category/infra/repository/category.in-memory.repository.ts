@@ -1,7 +1,12 @@
 import { CategoryRepository } from 'category/domain/repository/category.repository';
+import { SearchableRepositoryInMemory } from '@seedwork/domain/repository/searchableRepository.in-memory';
 import { Category } from '../../domain/entities/category';
-import { RepositoryInMemory } from '../../../@seedwork/domain/repository/repository.in-memory';
 
 export class CategoryInMemoryRepository
-  extends RepositoryInMemory<Category>
-  implements CategoryRepository {}
+  extends SearchableRepositoryInMemory<Category>
+  implements CategoryRepository
+{
+  search(properties: any): Promise<any> {
+    throw new Error('Method not implemented.');
+  }
+}
