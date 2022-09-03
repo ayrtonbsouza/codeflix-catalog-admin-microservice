@@ -70,7 +70,7 @@ export class SearchParameters {
     this._per_page = _per_page;
   }
 
-  get sort() {
+  get sort(): string | null {
     return this._sort;
   }
 
@@ -79,7 +79,7 @@ export class SearchParameters {
       value === null || value === undefined || value === '' ? null : `${value}`;
   }
 
-  get sort_direction() {
+  get sort_direction(): SortDirection | null {
     return this._sort_direction;
   }
 
@@ -93,7 +93,7 @@ export class SearchParameters {
       direction !== 'asc' && direction !== 'desc' ? 'asc' : direction;
   }
 
-  get filter() {
+  get filter(): string | null {
     return this._filter;
   }
 
@@ -154,5 +154,6 @@ export interface ISearchableRepository<
   SearchInput = SearchParameters,
   SearchOutput = SearchResult<E, Filter>
 > extends IRepository<E> {
+  sortableFields: string[];
   search(properties: SearchInput): Promise<SearchOutput>;
 }
