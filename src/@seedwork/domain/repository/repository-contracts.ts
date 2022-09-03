@@ -103,10 +103,56 @@ export class SearchParameters {
   }
 }
 
+type SearchResultProperties<E extends Entity, Filter> = {
+  items: E[];
+  total: number;
+  current_page: number;
+  per_page: number;
+  sort: string | null;
+  sort_direction: string | null;
+  filter: Filter | null;
+};
+
+export class SearchResult<E extends Entity, Filter = string> {
+  readonly items: E[];
+  readonly total: number;
+  readonly current_page: number;
+  readonly per_page: number;
+  readonly last_page: number;
+  readonly sort: string | null;
+  readonly sort_direction: string | null;
+  readonly filter: Filter;
+
+  constructor(properties: SearchResultProperties<E, Filter>) {
+    this.items = properties.items;
+    this.total = properties.total;
+    this.current_page = properties.current_page;
+    this.per_page = properties.per_page;
+    this.last_page = Math.ceil(properties.total / properties.per_page);
+    this.sort = properties.sort;
+    this.sort_direction = properties.sort_direction;
+    this.filter = properties.filter;
+  }
+
+  toJSON() {
+    return {
+      items: this.items,
+      total: this.total,
+      current_page: this.current_page,
+      per_page: this.per_page,
+      last_page: this.last_page,
+      sort: this.sort,
+      sort_direction: this.sort_direction,
+      filter: this.filter,
+    };
+  }
+}
+
 export interface ISearchableRepository<
   E extends Entity,
-  SearchOutput,
-  SearchInput = SearchParameters
+  Filter = string,
+  SearchInput = SearchParameters,
+  SearchOutput = SearchResult<E, Filter>
 > extends IRepository<E> {
   search(properties: SearchInput): Promise<SearchOutput>;
 }

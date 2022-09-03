@@ -1,6 +1,6 @@
-import { SearchParameters } from './repository-contracts';
+import { SearchParameters, SearchResult } from './repository-contracts';
 
-describe('[Unit] Repository Contracts', () => {
+describe('[Unit] Search Input', () => {
   test('[method] should be able to set page property', () => {
     const arrange = [
       { page: null, expected: 1 },
@@ -137,5 +137,77 @@ describe('[Unit] Repository Contracts', () => {
         item.expected
       );
     });
+  });
+});
+
+describe('[Unit] Search Result', () => {
+  test('[constructor] should be able to set parameters on constructor', () => {
+    let output = new SearchResult({
+      items: ['dummy entity', 'dummy entity'] as any,
+      total: 4,
+      current_page: 1,
+      per_page: 2,
+      sort: null,
+      sort_direction: null,
+      filter: null,
+    });
+
+    expect(output.toJSON()).toStrictEqual({
+      items: ['dummy entity', 'dummy entity'] as any,
+      total: 4,
+      current_page: 1,
+      per_page: 2,
+      last_page: 2,
+      sort: null,
+      sort_direction: null,
+      filter: null,
+    });
+
+    output = new SearchResult({
+      items: ['dummy entity', 'dummy entity'] as any,
+      total: 4,
+      current_page: 1,
+      per_page: 2,
+      sort: 'name',
+      sort_direction: 'asc',
+      filter: 'test',
+    });
+
+    expect(output.toJSON()).toStrictEqual({
+      items: ['dummy entity', 'dummy entity'] as any,
+      total: 4,
+      current_page: 1,
+      per_page: 2,
+      last_page: 2,
+      sort: 'name',
+      sort_direction: 'asc',
+      filter: 'test',
+    });
+  });
+
+  test('[constructor] last_page attribute is properly calculated', () => {
+    let output = new SearchResult({
+      items: ['dummy entity', 'dummy entity'] as any,
+      total: 4,
+      current_page: 1,
+      per_page: 15,
+      sort: null,
+      sort_direction: null,
+      filter: null,
+    });
+
+    expect(output.last_page).toBe(1);
+
+    output = new SearchResult({
+      items: ['dummy entity', 'dummy entity'] as any,
+      total: 101,
+      current_page: 1,
+      per_page: 20,
+      sort: null,
+      sort_direction: null,
+      filter: null,
+    });
+
+    expect(output.last_page).toBe(6);
   });
 });
