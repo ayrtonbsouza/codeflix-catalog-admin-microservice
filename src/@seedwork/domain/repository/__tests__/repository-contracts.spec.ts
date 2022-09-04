@@ -1,4 +1,4 @@
-import { SearchParameters, SearchResult } from './repository-contracts';
+import { SearchParameters, SearchResult } from '../repository-contracts';
 
 describe('[Unit] Search Input', () => {
   test('[method] should be able to set page property', () => {
