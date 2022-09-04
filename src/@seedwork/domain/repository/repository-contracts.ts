@@ -19,14 +19,14 @@ export type SearchProperties<Filter = string> = {
   filter?: Filter | null;
 };
 
-export class SearchParameters {
+export class SearchParameters<Filter = string> {
   protected _page: number;
   protected _per_page: number | 15;
   protected _sort: string | null;
   protected _sort_direction: SortDirection | null;
-  protected _filter: string | null;
+  protected _filter: Filter | null;
 
-  constructor(properties: SearchProperties = {}) {
+  constructor(properties: SearchProperties<Filter> = {}) {
     this.page = properties.page;
     this.per_page = properties.per_page;
     this.sort = properties.sort;
@@ -93,13 +93,15 @@ export class SearchParameters {
       direction !== 'asc' && direction !== 'desc' ? 'asc' : direction;
   }
 
-  get filter(): string | null {
+  get filter(): Filter | null {
     return this._filter;
   }
 
-  private set filter(value: string | null) {
+  private set filter(value: Filter | null) {
     this._filter =
-      value === null || value === undefined || value === '' ? null : `${value}`;
+      value === null || value === undefined || (value as unknown) === ''
+        ? null
+        : (`${value}` as any);
   }
 }
 

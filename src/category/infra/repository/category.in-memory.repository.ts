@@ -4,9 +4,18 @@ import { Category } from '../../domain/entities/category';
 
 export class CategoryInMemoryRepository
   extends SearchableRepositoryInMemory<Category>
-  implements CategoryRepository
+  implements CategoryRepository.Repository
 {
-  search(properties: any): Promise<any> {
-    throw new Error('Method not implemented.');
+  protected async applyFilter(
+    items: Category[],
+    filter: CategoryRepository.Filter
+  ): Promise<Category[]> {
+    if (!filter) {
+      return items;
+    }
+
+    return items.filter((item) =>
+      item.props.name.toLowerCase().includes(filter.toLowerCase())
+    );
   }
 }
