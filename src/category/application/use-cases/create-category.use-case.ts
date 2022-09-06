@@ -1,7 +1,7 @@
-import { CategoryRepository } from 'category/domain/repository/category.repository';
+import { CategoryRepository } from '../../domain/repository/category.repository';
 import { IUseCase } from '../../../@seedwork/application/use-case';
 import { Category } from '../../domain/entities/category';
-import { CategoryOutput } from '../dtos/category-output.dto';
+import { CategoryOutput, CategoryOutputMapper } from '../dtos/category-output';
 
 export type Input = {
   name: string;
@@ -23,12 +23,6 @@ export class CreateCategoryUseCase implements IUseCase<Input, Output> {
 
     await this.categoryRepository.insert(category);
 
-    return {
-      id: category.id,
-      name: category.name,
-      description: category.description,
-      is_active: category.is_active,
-      created_at: category.created_at,
-    };
+    return CategoryOutputMapper.toOutput(category);
   }
 }
