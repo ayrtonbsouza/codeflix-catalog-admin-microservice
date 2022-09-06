@@ -17,7 +17,6 @@ export class ListCategoriesUseCase implements IUseCase<Input, Output> {
   async execute(input: Input): Promise<Output> {
     const parameters = new CategoryRepository.SearchParameters(input);
     const categories = await this.categoryRepository.search(parameters);
-
     return this.toOutput(categories);
   }
 
