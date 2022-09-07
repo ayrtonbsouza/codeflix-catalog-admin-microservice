@@ -1,5 +1,5 @@
-import { IUseCase } from '../../../@seedwork/application/use-case';
-import { CategoryRepository } from '../../domain/repository/category.repository';
+import { IUseCase } from '#seedwork/application/use-case';
+import { CategoryRepository } from '#category/domain/repository/category.repository';
 import { CategoryOutput, CategoryOutputMapper } from '../dtos/category-output';
 
 export type Input = {

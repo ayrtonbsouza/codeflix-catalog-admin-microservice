@@ -1,7 +1,7 @@
 import { omit } from 'lodash';
 
+import { UniqueEntityId } from '#seedwork/domain/value-objects/unique-entity-id';
 import { Category } from './category';
-import { UniqueEntityId } from '../../../@seedwork/domain/value-objects/unique-entity-id';
 
 describe('[Unit] Category Entity', () => {
   beforeEach(() => {

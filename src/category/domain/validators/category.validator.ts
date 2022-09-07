@@ -1,4 +1,4 @@
-import { ClassValidatorFields } from '../../../@seedwork/domain/validators/class-validator-fields';
+import { ClassValidatorFields } from '#seedwork/domain/validators/class-validator-fields';
 import { CategoryRules } from './category.rules';
 
 export class CategoryValidator extends ClassValidatorFields<CategoryRules> {

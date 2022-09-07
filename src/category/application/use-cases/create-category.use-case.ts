@@ -1,6 +1,6 @@
-import { CategoryRepository } from '../../domain/repository/category.repository';
-import { IUseCase } from '../../../@seedwork/application/use-case';
-import { Category } from '../../domain/entities/category';
+import { IUseCase } from '#seedwork/application/use-case';
+import { CategoryRepository } from '#category/domain/repository/category.repository';
+import { Category } from '#category/domain/entities/category';
 import { CategoryOutput, CategoryOutputMapper } from '../dtos/category-output';
 
 export type Input = {

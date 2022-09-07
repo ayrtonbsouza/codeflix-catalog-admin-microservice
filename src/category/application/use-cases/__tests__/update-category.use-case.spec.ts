@@ -1,6 +1,6 @@
-import { Category } from '../../../domain/entities/category';
-import { NotFoundError } from '../../../../@seedwork/domain/errors/not-found.error';
-import { CategoryInMemoryRepository } from '../../../infra/repository/category.in-memory.repository';
+import { NotFoundError } from '#seedwork/domain/errors/not-found.error';
+import { Category } from '#category/domain/entities/category';
+import { CategoryInMemoryRepository } from '#category/infra/repository/category.in-memory.repository';
 import { UpdateCategoryUseCase } from '../update-category.use-case';
 
 describe('[Unit] Update Category Use Case', () => {

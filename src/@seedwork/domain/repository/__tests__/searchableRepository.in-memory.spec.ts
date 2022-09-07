@@ -1,4 +1,4 @@
-import { Entity } from '../../entities/entity';
+import { Entity } from '#seedwork/domain/entities/entity';
 import { SearchParameters, SearchResult } from '../repository-contracts';
 import { SearchableRepositoryInMemory } from '../searchableRepository.in-memory';
 
