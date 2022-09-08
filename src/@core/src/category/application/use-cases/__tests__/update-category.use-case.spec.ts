@@ -4,12 +4,12 @@ import { CategoryInMemoryRepository } from '#category/infra/repository/category.
 import { UpdateCategoryUseCase } from '../update-category.use-case';
 
 describe('[Unit] Update Category Use Case', () => {
-  let useCase: UpdateCategoryUseCase;
+  let useCase: UpdateCategoryUseCase.UseCase;
   let repository: CategoryInMemoryRepository;
 
   beforeEach(() => {
     repository = new CategoryInMemoryRepository();
-    useCase = new UpdateCategoryUseCase(repository);
+    useCase = new UpdateCategoryUseCase.UseCase(repository);
   });
 
   it('[method] should return an error when id is not found', async () => {

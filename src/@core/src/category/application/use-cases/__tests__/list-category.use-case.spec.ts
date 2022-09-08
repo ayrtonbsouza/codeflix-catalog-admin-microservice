@@ -4,12 +4,12 @@ import { CategoryInMemoryRepository } from '#category/infra/repository/category.
 import { ListCategoriesUseCase } from '../list-categories.use-case';
 
 describe('[Unit] List Categories Use Case', () => {
-  let useCase: ListCategoriesUseCase;
+  let useCase: ListCategoriesUseCase.UseCase;
   let repository: CategoryInMemoryRepository;
 
   beforeEach(() => {
     repository = new CategoryInMemoryRepository();
-    useCase = new ListCategoriesUseCase(repository);
+    useCase = new ListCategoriesUseCase.UseCase(repository);
   });
 
   it('[method] should be able to parse a category to output format', () => {

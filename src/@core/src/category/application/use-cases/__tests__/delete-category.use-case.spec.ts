@@ -4,12 +4,12 @@ import { Category } from '#category/domain/entities/category';
 import { DeleteCategoryUseCase } from '../delete-category.use-case';
 
 describe('[Unit] Delete Category Use Case', () => {
-  let useCase: DeleteCategoryUseCase;
+  let useCase: DeleteCategoryUseCase.UseCase;
   let repository: CategoryInMemoryRepository;
 
   beforeEach(() => {
     repository = new CategoryInMemoryRepository();
-    useCase = new DeleteCategoryUseCase(repository);
+    useCase = new DeleteCategoryUseCase.UseCase(repository);
   });
 
   it('[method] should not be able to delete a category when id is not found', async () => {
