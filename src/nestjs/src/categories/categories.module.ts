@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { CategoryRepository } from '@cam/core/category/domain';
+import { CategoryRepository } from '@cam/core/dist/category/domain';
 import {
   CreateCategoryUseCase,
   ListCategoriesUseCase,
-} from '@cam/core/category/application';
-import { CategoryInMemoryRepository } from '@cam/core/category/infra';
+} from '@cam/core/dist/category/application';
+import { CategoryInMemoryRepository } from '@cam/core/dist/category/infra';
 import { CategoriesService } from './categories.service';
 import { CategoriesController } from './categories.controller';
 

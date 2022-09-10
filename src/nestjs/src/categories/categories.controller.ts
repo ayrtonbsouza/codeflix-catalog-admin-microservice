@@ -1,7 +1,7 @@
 import {
   CreateCategoryUseCase,
   ListCategoriesUseCase,
-} from '@cam/core/category/application';
+} from '@cam/core/dist/category/application';
 import {
   Controller,
   Get,
