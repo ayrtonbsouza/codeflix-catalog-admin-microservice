@@ -1,17 +1,18 @@
 import { Module } from '@nestjs/common';
-import { CategoryRepository } from '@cam/core/dist/category/domain';
+import { CategoryRepository } from '@cam/core/category/domain';
 import {
   CreateCategoryUseCase,
+  DeleteCategoryUseCase,
+  GetCategoryUseCase,
   ListCategoriesUseCase,
-} from '@cam/core/dist/category/application';
-import { CategoryInMemoryRepository } from '@cam/core/dist/category/infra';
-import { CategoriesService } from './categories.service';
+  UpdateCategoryUseCase,
+} from '@cam/core/category/application';
+import { CategoryInMemoryRepository } from '@cam/core/category/infra';
 import { CategoriesController } from './categories.controller';
 
 @Module({
   controllers: [CategoriesController],
   providers: [
-    CategoriesService,
     {
       provide: 'CategoryInMemoryRepository',
       useClass: CategoryInMemoryRepository,
@@ -26,6 +27,24 @@ import { CategoriesController } from './categories.controller';
       provide: ListCategoriesUseCase.UseCase,
       useFactory: (categoryRepository: CategoryRepository.Repository) =>
         new ListCategoriesUseCase.UseCase(categoryRepository),
+      inject: ['CategoryInMemoryRepository'],
+    },
+    {
+      provide: GetCategoryUseCase.UseCase,
+      useFactory: (categoryRepository: CategoryRepository.Repository) =>
+        new GetCategoryUseCase.UseCase(categoryRepository),
+      inject: ['CategoryInMemoryRepository'],
+    },
+    {
+      provide: UpdateCategoryUseCase.UseCase,
+      useFactory: (categoryRepository: CategoryRepository.Repository) =>
+        new UpdateCategoryUseCase.UseCase(categoryRepository),
+      inject: ['CategoryInMemoryRepository'],
+    },
+    {
+      provide: DeleteCategoryUseCase.UseCase,
+      useFactory: (categoryRepository: CategoryRepository.Repository) =>
+        new DeleteCategoryUseCase.UseCase(categoryRepository),
       inject: ['CategoryInMemoryRepository'],
     },
   ],
