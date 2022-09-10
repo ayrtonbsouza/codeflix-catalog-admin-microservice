@@ -1,4 +1,8 @@
 import {
+  CreateCategoryUseCase,
+  ListCategoriesUseCase,
+} from '@cam/core/category/application';
+import {
   Controller,
   Get,
   Post,
@@ -13,16 +17,20 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Controller('categories')
 export class CategoriesController {
-  constructor(private readonly categoriesService: CategoriesService) {}
+  constructor(
+    private readonly categoriesService: CategoriesService,
+    private createCategoryUseCase: CreateCategoryUseCase.UseCase,
+    private listCategoriesUseCase: ListCategoriesUseCase.UseCase,
+  ) {}
 
   @Post()
   create(@Body() createCategoryDto: CreateCategoryDto) {
-    return this.categoriesService.create(createCategoryDto);
+    return this.createCategoryUseCase.execute({ name: 'Category' });
   }
 
   @Get()
   findAll() {
-    return this.categoriesService.findAll();
+    return this.listCategoriesUseCase.execute({});
   }
 
   @Get(':id')

@@ -18,6 +18,13 @@
     "cti:@core": "sh ./cti.sh",
     "prepare": "husky install"
   },
+  "license": "ISC",
+  "keywords": [
+    "microservice",
+    "video",
+    "admin",
+    "catalog"
+  ],
   "imports": {
     "#seedwork/*": "./dist/@seedwork/*.js",
     "#category/*": "./dist/category/*.js"
@@ -31,20 +38,26 @@
   },
   "typesVersions": {
     ">=4.0": {
-      "@seedwork/application": ["./dist/@seedwork/application/index.d.ts"],
-      "@seedwork/domain": ["./dist/@seedwork/domain/index.d.ts"],
-      "category/application": ["./dist/category/application/index.d.ts"],
-      "category/domain": ["./dist/category/domain/index.d.ts"],
-      "category/infra": ["./dist/category/infra/index.d.ts"]
+      "@seedwork/application": [
+        "./dist/@seedwork/application/index.d.ts"
+      ],
+      "@seedwork/domain": [
+        "./dist/@seedwork/domain/index.d.ts"
+      ],
+      "@seedwork/infra": [
+        "./dist/@seedwork/infra/index.d.ts"
+      ],
+      "category/application": [
+        "./dist/category/application/index.d.ts"
+      ],
+      "category/domain": [
+        "./dist/category/domain/index.d.ts"
+      ],
+      "category/infra": [
+        "./dist/category/infra/index.d.ts"
+      ]
     }
   },
-  "license": "ISC",
-  "keywords": [
-    "microservice",
-    "video",
-    "admin",
-    "catalog"
-  ],
   "dependencies": {
     "class-validator": "^0.13.2",
     "lodash": "^4.17.21",
