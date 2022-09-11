@@ -1,0 +1,223 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-09-11T00:33:40.157Z",
+  "__export_source": "insomnia.desktop.app:v2022.5.1",
+  "resources": [
+    {
+      "_id": "req_95ff4cf3cbfa4eb0a3a17c2fde4af87e",
+      "parentId": "fld_c4e8f8ba41804cc8b875612a9bcadc26",
+      "modified": 1662831439408,
+      "created": 1662783774264,
+      "url": "{{ _.baseURL }}/categories",
+      "name": "create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Movie Category\",\n\t\"description\": \"Some movie category description\",\n\t\"is_active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_655834bd27714f86b56f4a52a3f9b927"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1662776192957,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_c4e8f8ba41804cc8b875612a9bcadc26",
+      "parentId": "wrk_06b70667a89d43d0997da4be13bc8f84",
+      "modified": 1662776185350,
+      "created": 1662776185350,
+      "name": "categories",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1662776185350,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_06b70667a89d43d0997da4be13bc8f84",
+      "parentId": null,
+      "modified": 1662776121341,
+      "created": 1662776121341,
+      "name": "Codeflix - Catalog Administration",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_462455dc60f54fca9522d6ba401e4cde",
+      "parentId": "fld_c4e8f8ba41804cc8b875612a9bcadc26",
+      "modified": 1662831432418,
+      "created": 1662776192907,
+      "url": "{{ _.baseURL }}/categories",
+      "name": "search",
+      "description": "",
+      "method": "GET",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_4cef3fa4be3f4f62bc791f09911afae2"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1662776192907,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_5cf0da7718e343ce9fc2e6d66cebf2e5",
+      "parentId": "fld_c4e8f8ba41804cc8b875612a9bcadc26",
+      "modified": 1662831359473,
+      "created": 1662831149003,
+      "url": "{{ _.baseURL }}/categories/b4c8c8be-290b-4660-af50-f3aa02dd917f",
+      "name": "findOne",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1662293843601,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1e4a92f4f77d4a87b7beb6a8d887ddf4",
+      "parentId": "fld_c4e8f8ba41804cc8b875612a9bcadc26",
+      "modified": 1662831420530,
+      "created": 1662831180452,
+      "url": "{{ _.baseURL }}/categories/b4c8c8be-290b-4660-af50-f3aa02dd917f",
+      "name": "update",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Other Movie Category\",\n\t\"description\": \"Some movie category description\",\n\t\"is_active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_6fb058a2d5e946c68680431aa0086123"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1662293843551,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_ca5ca826a708403dad1fd912150d3c18",
+      "parentId": "fld_c4e8f8ba41804cc8b875612a9bcadc26",
+      "modified": 1662831427429,
+      "created": 1662831195535,
+      "url": "{{ _.baseURL }}/categories/b4c8c8be-290b-4660-af50-f3aa02dd917f",
+      "name": "delete",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1662293843501,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_35a568a35df1b9487752517fb8d677f165a7c50c",
+      "parentId": "wrk_06b70667a89d43d0997da4be13bc8f84",
+      "modified": 1662776126282,
+      "created": 1662776121345,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": {},
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1662776121345,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_35a568a35df1b9487752517fb8d677f165a7c50c",
+      "parentId": "wrk_06b70667a89d43d0997da4be13bc8f84",
+      "modified": 1662776121345,
+      "created": 1662776121345,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_3b87013647534f6a889f35d7c9c64748",
+      "parentId": "wrk_06b70667a89d43d0997da4be13bc8f84",
+      "modified": 1662776121343,
+      "created": 1662776121343,
+      "fileName": "Codeflix - Catalog Administration",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_74a58a2a69504e6ba9ac7a5d30ecd87e",
+      "parentId": "env_35a568a35df1b9487752517fb8d677f165a7c50c",
+      "modified": 1662776155894,
+      "created": 1662776129446,
+      "name": "local",
+      "data": {
+        "baseURL": "localhost:3000"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "baseURL"
+        ]
+      },
+      "color": "#fc3dff",
+      "isPrivate": false,
+      "metaSortKey": 1662776129446,
+      "_type": "environment"
+    }
+  ]
+}
